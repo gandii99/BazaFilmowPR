@@ -13,15 +13,17 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 `
 
 class MenuList extends Component {
+
 
     render(){
         return (
             <Container>
                 <LogoArea />
-                <SearchArea />
+                <SearchArea draftValue={this.props.draftValue} setDraftValue={this.props.setDraftValue} />
                 <LoginArea />
             </Container>
         )

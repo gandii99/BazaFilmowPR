@@ -4,16 +4,18 @@ import logo from '../../file/logo.png';
 
 
 const Logo = styled.img`
-    width: 10%;
-    max-height: 100%;
+    height: 180px;
     margin-left: 3%;
+    &:hover{
+        cursor: pointer;
+    }
 `
 
 class LogoArea extends Component {
 
     render(){
         return (
-            <Logo src={logo}/> 
+            <Logo src={logo} /> 
         )
     }
 }

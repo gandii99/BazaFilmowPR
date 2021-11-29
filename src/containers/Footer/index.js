@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import logo from '../../file/logo.png';
 
 const Container = styled.div`
-    min-height: 6vh;
+    min-height: 10vh;
     background: #FFD70D;
     font-family: 'roboto', 'sans-serif';
     font-size: 24px;
-    text-align: left;
+    text-align: center;
     padding-left: 10px;
+    line-height: 10vh;
 `
 
 const Text = styled.div`
-    padding-top: 15px;
+
 `
 
 

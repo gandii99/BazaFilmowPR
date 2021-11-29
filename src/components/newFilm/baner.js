@@ -1,21 +1,31 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import logo from '../../file/baner.jpg';
 
 
 const Baner = styled.img`
-    height: 100%;
+    min-width: 250px;
+    width: 100%;
     transition: .5s linear;
+    cursor: pointer;
     &:hover{
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
+`
+
+const Image = styled.div`
+    width: 50%;
+    overflow: hidden;
 `
 
 class BanerFilm extends Component {
 
+
     render(){
+        console.log(this.props.src);
         return (
-            <Baner src={logo}/> 
+        <Image>
+            <Baner src={this.props.src}/> 
+        </Image>   
         )
     }
 }
