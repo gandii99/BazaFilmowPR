@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import logo from '../../file/logo.png';
-
+import {Link} from 'react-router-dom'
+import './logo.css';
 
 const Logo = styled.img`
     height: 180px;
@@ -15,7 +16,7 @@ class LogoArea extends Component {
 
     render(){
         return (
-            <Logo src={logo} /> 
+            <Link to="/" className='linkLogo'><Logo src={logo} /> </Link>
         )
     }
 }

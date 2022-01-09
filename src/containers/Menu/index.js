@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import LoginArea from '../../components/menu/login';
 import LogoArea from '../../components/menu/logo';
 import SearchArea from '../../components/menu/search';
-
+import AddFilmBtn from '../../components/menu/addFilmBtn';
 
 const Container = styled.div`
     background: #F2CC0C;
@@ -16,6 +16,11 @@ const Container = styled.div`
     overflow: hidden;
 `
 
+const ButtonsPlace = styled.div`
+    display: flex;
+    
+`
+
 class MenuList extends Component {
 
 
@@ -24,7 +29,10 @@ class MenuList extends Component {
             <Container>
                 <LogoArea />
                 <SearchArea draftValue={this.props.draftValue} setDraftValue={this.props.setDraftValue} />
-                <LoginArea />
+                <ButtonsPlace>
+                    <AddFilmBtn />
+                    <LoginArea />
+                </ButtonsPlace>
             </Container>
         )
     }

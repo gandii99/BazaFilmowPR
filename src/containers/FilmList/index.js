@@ -4,6 +4,7 @@ import Rating from '../../components/newFilm/rating';
 import Title from '../../components/newFilm/titleFilm';
 import BanerFilm from '../../components/newFilm/baner';
 import Description from '../../components/newFilm/description';
+import {Link} from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
@@ -77,7 +78,8 @@ class FilmList extends Component {
                                     <Title title={film.title}/>
                                     <Rating rating={film.rating}/>
                                     <Description description={film.description}/>
-                                    <ReadMore> Czytaj więcej </ReadMore>
+                                    <Link to='/details'><ReadMore> Czytaj więcej </ReadMore></Link>
+                                    
                                 </FilmData>
                             </Container>
                         )
@@ -90,7 +92,7 @@ class FilmList extends Component {
                                 <Title title={film.title}/>
                                 <Rating rating={film.rating}/>
                                 <Description description={film.description}/>
-                                <ReadMore> Czytaj więcej </ReadMore>
+                                <Link to='/details'><ReadMore> Czytaj więcej </ReadMore></Link>
                             </FilmData>
                         </Container>
                     )
