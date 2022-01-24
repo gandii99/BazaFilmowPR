@@ -1,33 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-
 const Baner = styled.img`
-    min-width: 250px;
-    width: 100%;
-    transition: .5s linear;
-    cursor: pointer;
-    &:hover{
-        transform: scale(1.2);
-    }
-`
+  min-width: 250px;
+  width: 100%;
+  transition: 0.5s linear;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
 
 const Image = styled.div`
-    width: 50%;
-    overflow: hidden;
-`
+  width: 50%;
+  overflow: hidden;
+`;
 
-class BanerFilm extends Component {
-
-
-    render(){
-        console.log(this.props.src);
-        return (
-        <Image>
-            <Baner src={this.props.src}/> 
-        </Image>   
-        )
-    }
+function BanerFilm({ image }) {
+  return (
+    <Image>
+      <Baner src={image} />
+    </Image>
+  );
 }
 
 export default BanerFilm;

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Button = styled.button`
@@ -16,6 +16,7 @@ const Button = styled.button`
 const Container = styled.div`
     position: relative;
     width: 200px;
+    margin: 0 15px;
     &:after {
         position: absolute;
         bottom: -8px;
@@ -34,19 +35,16 @@ const Container = styled.div`
       
 `;
 
-class AddFilmBtn extends Component {
-  render() {
-    return (
-      <Container>
-        <Link to="/addfilm">
-          <Button>
-            {' '}
-            <FontAwesomeIcon icon={faFolderPlus} /> &nbsp;Dodaj film{' '}
-          </Button>
-        </Link>
-      </Container>
-    );
-  }
+function LogoutArea(props) {
+  return (
+    <Container>
+      <Link to="/">
+        <Button onClick={() => props.setToken(null)}>
+          <FontAwesomeIcon icon={faSignInAlt} /> &nbsp;Wyloguj się{' '}
+        </Button>
+      </Link>
+    </Container>
+  );
 }
 
-export default AddFilmBtn;
+export default LogoutArea;

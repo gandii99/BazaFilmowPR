@@ -1,69 +1,61 @@
 import styled from 'styled-components';
-import { useState } from 'react';
-import {Link} from 'react-router-dom';
-import hellboundBaner from '../../file/hellboundBaner.jpeg';
-import Description from '../../components/newFilm/description';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-import pictureActor from '../../file/tomKar.jpg'
-import pictureActorCharacter from '../../file/tomKarMik.png'
+import pictureActor from '../../file/tomKar.jpg';
+import pictureActorCharacter from '../../file/tomKarMik.png';
 
 const Container = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    height: 220px;
-    margin: 0 10% 5%;
-`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: 220px;
+  margin: 0 10% 5%;
+`;
 
 const PicturePlaceActor = styled.div`
-    background-image: url(${pictureActor});
-    overflow: hidden;
-    height: 180px;
-    background-size: cover;
-    background-position-x: center;
-    background-position-y: center;
-`
+  background-image: url(${pictureActor});
+  overflow: hidden;
+  height: 180px;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+`;
 
 const PicturePlaceCharacter = styled.div`
-    background-image: url(${pictureActorCharacter});
-    overflow: hidden;
-    height: 180px;
-    background-size: cover;
-    background-position-x: center;
-    background-position-y: center;
-`
+  background-image: url(${pictureActorCharacter});
+  overflow: hidden;
+  height: 180px;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+`;
 
 const Name = styled.div`
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 40px;
-    color: #ccc;
-`
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 40px;
+  color: #ccc;
+`;
 
 const Character = styled.div`
-    width: 45%;
-    border: 1px solid #444;
-`
+  width: 45%;
+  border: 1px solid #444;
+`;
 const Picture = styled.img`
-    height: 100%;
-    width: auto;
-`
-
+  height: 100%;
+  width: auto;
+`;
 
 function NewActor() {
-//<img src={picture}></img>
+  //<img src={picture}></img>
   return (
     <Container>
-        <Character>
-            <PicturePlaceActor></PicturePlaceActor>
-            <Name>Tomasz Karolak</Name>
-        </Character>
-        <Character>
-            <PicturePlaceCharacter></PicturePlaceCharacter>
-            <Name>Święty Mikołaj</Name>
-        </Character>
+      <Character>
+        <PicturePlaceActor></PicturePlaceActor>
+        <Name>Tomasz Karolak</Name>
+      </Character>
+      <Character>
+        <PicturePlaceCharacter></PicturePlaceCharacter>
+        <Name>Święty Mikołaj</Name>
+      </Character>
     </Container>
   );
 }

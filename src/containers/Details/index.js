@@ -1,121 +1,109 @@
 import styled from 'styled-components';
-import { useState } from 'react';
-import {Link} from 'react-router-dom';
-import hellboundBaner from '../../file/hellboundBaner.jpeg';
-import Description from '../../components/newFilm/description';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-import NewActor from '../../components/newActor';
-import longbaner from '../../file/longbaner.jpg'
-
+import axios from 'axios';
 
 const Container = styled.div`
-    display: flex;
-    width: 100%;
-    min-height: 80vh;
-    background-color: yellow;
-`
-
-const Content = styled.div`
-    width: 80vw;
-    min-height: 80vh;
-    background-color: #000;
-    padding: 2% 2%;
-`
-
-const AssideActors = styled.div`
-    background-color: #000;
-    width: 20vw;
-    min-height: 80vh;
-    padding: 2% 0;
-`
+  display: flex;
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 80vh;
+  background-color: white;
+`;
 
 const Baner = styled.div`
-    width: 100%;
-    background-color: #000;
-    overflow: hidden;
-`
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+`;
 
 const Image = styled.img`
-    width: 100%;
-    height: auto;
-`
+  height: 100%;
+  width: auto;
+`;
 
 const DescriptionPlace = styled.div`
-    background: #000;
-    padding: 40px 30px;
-`
-
+  display: grid;
+  grid-template-rows: 2fr 5fr;
+  background-color: #eee;
+  width: 65%;
+  padding: 40px 30px;
+`;
 
 const Desc = styled.p`
-    color: white;
-    text-align: left;
-    margin-top: 30px;
-    font-size: 20px;
-    text-align: justify;
-`
+  color: white;
+  text-align: left;
+  margin-top: 30px;
+  font-size: 24px;
+  text-align: justify;
+  color: #222;
+`;
 const Header = styled.div`
-    display: flex;
-    flex-direction: row;
-`
+  display: flex;
+  flex-direction: row;
+`;
 const Title = styled.p`
-    font-size: 56px;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 10px; 
-    text-align: left;
-    width: 80%;
-`
+  font-size: 44px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  text-align: left;
+  width: 70%;
+  color: #222;
+`;
 
 const Rating = styled.div`
-    width: 20%;
-    height: 100px;
-    color: yellow;
-    text-align: left;
-    font-size: 42px;
-`
+  width: 30%;
+  height: 100px;
+  color: #ffd700;
+  text-align: left;
+  font-size: 42px;
+  color: #000;
+`;
 const Score = styled.div`
-    font-size: 16px;
-`
-
+  font-size: 16px;
+`;
 
 function Details() {
+  const { id } = useParams();
+  const [filmDetail, setFilmDetail] = useState('');
+
+  useEffect(() => {
+    axios
+      .get('https://pr-movies.herokuapp.com/api/movies/' + id)
+      .then((res) => {
+        console.log('data', res.data);
+        setFilmDetail(res.data);
+      });
+  });
 
   return (
     <Container>
-        <Content>
-            <Baner>
-                <Image src={longbaner}></Image>
-            </Baner>
-            <DescriptionPlace>
-                <Header>
-                    <Title>Hellbound</Title>
-                    <Rating>
-                        <div>
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarHalfAlt} />
-                        </div>
-                        <Score>Ocena: 4.6</Score>
-                    </Rating>
-                </Header>
-                <Desc>Pozaziemskie istoty wydają krwawe wyroki i wysyłają ziemian do piekła, przyczyniając się do powstania grupy wyznaniowej opartej na idei boskiej sprawiedliwości.
-                Pozaziemskie istoty wydają krwawe wyroki i wysyłają ziemian do piekła, przyczyniając się do powstania grupy wyznaniowej opartej na idei boskiej sprawiedliwości.
-                Pozaziemskie istoty wydają krwawe wyroki i wysyłają ziemian do piekła, przyczyniając się do powstania grupy wyznaniowej opartej na idei boskiej sprawiedliwości.
-                </Desc>
-            </DescriptionPlace>
-        </Content>
-        <AssideActors>
-            <NewActor />
-            <NewActor />
-            <NewActor />
-
-        </AssideActors>
-        
-
+      <Baner>
+        <Image src={filmDetail.image}></Image>
+      </Baner>
+      <DescriptionPlace>
+        <Header>
+          <Title>{filmDetail.title}</Title>
+          <Rating>
+            <div>
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
+            </div>
+            <Score>Ocena: 5.4</Score>
+          </Rating>
+        </Header>
+        <Desc>{filmDetail.content}</Desc>
+      </DescriptionPlace>
     </Container>
   );
 }
