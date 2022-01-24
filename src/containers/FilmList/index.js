@@ -76,23 +76,33 @@ function FilmList(props) {
         let link = '/details/' + film.id;
         let str = '';
         if (props.draftValue.length > 0) {
-          for (let i = 0; i < props.draftValue.length; i++) {
-            str += film.title[i];
-          }
-          if (str.toUpperCase() === props.draftValue.toUpperCase()) {
-            return (
-              <Container>
-                <BanerFilm image={film.image} />
-                <FilmData>
-                  <Title title={film.title} />
-                  <Rating rating="5.4" />
-                  <Description description={film.content} />
-                  <Link to={link}>
-                    <ReadMore> Czytaj więcej </ReadMore>
-                  </Link>
-                </FilmData>
-              </Container>
-            );
+          if (
+            film.title != null &&
+            film.id != null &&
+            film.image != null &&
+            film.content != null
+          ) {
+            for (let i = 0; i < props.draftValue.length; i++) {
+              console.log(props.draftValue.length);
+              console.log(film.title[i]);
+              str += film.title[i];
+            }
+            console.log('łańcuch', str);
+            if (str.toUpperCase() === props.draftValue.toUpperCase()) {
+              return (
+                <Container>
+                  <BanerFilm image={film.image} />
+                  <FilmData>
+                    <Title title={film.title} />
+                    <Rating rating="5.4" />
+                    <Description description={film.content} />
+                    <Link to={link}>
+                      <ReadMore> Czytaj więcej </ReadMore>
+                    </Link>
+                  </FilmData>
+                </Container>
+              );
+            }
           }
         } else {
           return (
@@ -109,7 +119,7 @@ function FilmList(props) {
             </Container>
           );
         }
-      }, {})}
+      })}
     </Content>
   );
 }

@@ -16,7 +16,6 @@ function App() {
   const [draftValue, setDraftValue] = useState('');
 
   function logout() {
-    console.log('dzialasdsd');
     setToken(null);
   }
   /* films={tabFilms} */
