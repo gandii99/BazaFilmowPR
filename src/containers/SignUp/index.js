@@ -167,7 +167,7 @@ function SignUp(props) {
               }}
             ></Input>
             <Input
-              type="text"
+              type="password"
               placeholder="Hasło"
               value={password}
               onChange={(evt) => {
