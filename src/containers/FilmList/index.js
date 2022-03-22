@@ -72,54 +72,31 @@ function FilmList(props) {
 
   return (
     <Content>
-      {filmList.map((film) => {
-        let link = '/details/' + film.id;
-        let str = '';
-        if (props.draftValue.length > 0) {
-          if (
-            film.title != null &&
-            film.id != null &&
-            film.image != null &&
-            film.content != null
-          ) {
-            for (let i = 0; i < props.draftValue.length; i++) {
-              console.log(props.draftValue.length);
-              console.log(film.title[i]);
-              str += film.title[i];
-            }
-            console.log('łańcuch', str);
-            if (str.toUpperCase() === props.draftValue.toUpperCase()) {
-              return (
-                <Container>
-                  <BanerFilm image={film.image} />
-                  <FilmData>
-                    <Title title={film.title} />
-                    <Rating rating="5.4" />
-                    <Description description={film.content} />
-                    <Link to={link}>
-                      <ReadMore> Czytaj więcej </ReadMore>
-                    </Link>
-                  </FilmData>
-                </Container>
-              );
-            }
-          }
-        } else {
+      {
+        filmList.filter((film) => {
           return (
-            <Container>
-              <BanerFilm image={film.image} />
-              <FilmData>
-                <Title title={film.title} />
-                <Rating rating="5.4" />
-                <Description description={film.content} />
-                <Link to={link}>
-                  <ReadMore> Czytaj więcej </ReadMore>
-                </Link>
-              </FilmData>
-            </Container>
+              film.title != null &&
+              film.id != null &&
+              film.image != null &&
+              film.content != null
+          )
+        }).filter( film => film.title.toLowerCase().includes(props.draftValue.toLowerCase())).map((film) => {
+          let link = '/details/' + film.id;
+          return (
+              <Container>
+                <BanerFilm image={film.image} />
+                <FilmData>
+                  <Title title={film.title} />
+                  <Rating rating="5.4" />
+                  <Description description={film.content} />
+                  <Link to={link}>
+                    <ReadMore> Czytaj więcej </ReadMore>
+                  </Link>
+                </FilmData>
+              </Container>
           );
-        }
-      })}
+        })
+      }
     </Content>
   );
 }
